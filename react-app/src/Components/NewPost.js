@@ -1,4 +1,5 @@
 import {useState} from "react";
+import axios from 'axios';
 
 const NewPost = () => {
   const [id, setId] = useState();
@@ -11,6 +12,11 @@ const NewPost = () => {
       title,
       body
     })
+    const data = {id, title, body};
+    axios
+    .post('http://localhost:3002/post', data) // `url` is the url to post to, `data` is the data to send in the body of the HTTP request
+    .then((response) => console.log(response))
+    .catch((error) => console.log(error));
   }
 
   return <div>
